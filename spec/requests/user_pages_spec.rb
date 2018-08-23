@@ -37,12 +37,12 @@ describe "User Pages" do
       end
 
       describe "after saving the user" do
-        it {should have_link('Sign out')}
+        it {should have_link('Sign out', href: signout_path)}
       end
 
       describe "followed by sign out" do
         before {click_link "Sign out"}
-        it {should have_link('Sign in')}
+        it {should have_link('Sign in', href: signin_path)}
       end
     end
   end
@@ -77,7 +77,7 @@ describe "User Pages" do
         click_button "Save changes"
       end
 
-      it {should have_selector('title', text: user.name)}
+      it {should have_selector('title', text: full_title(user.name))}
       it {should have_selector('div.alert.alert-success')}
       it {should have_link('Sign out', href: signout_path)}
       specify {user.reload.name.should == new_name}
