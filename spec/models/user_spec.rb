@@ -16,6 +16,7 @@ describe User do
   it {should respond_to(:remember_token)}
   it {should respond_to(:admin)}
   it {should respond_to(:authenticate)}
+  it {should respond_to(:microposts)}
 
   it {should be_valid}
   it {should_not be_admin}
@@ -26,7 +27,7 @@ describe User do
       @user.toggle!(:admin)
     end
 
-    it { should be_admin }
+    it {should be_admin}
   end
 
   describe "when name is not present" do
